@@ -1,0 +1,104 @@
+{
+  "id": "/subscriptions/a9d74e28-42a2-4d0d-a25e-93016641ce80/resourceGroups/Repetitio/providers/Microsoft.Resources/deployments/Microsoft.Web-WebApp-Portal-817f706f-8464",
+  "name": "Microsoft.Web-WebApp-Portal-817f706f-8464",
+  "type": "Microsoft.Resources/deployments",
+  "tags": {
+    "primaryResourceId": "/subscriptions/a9d74e28-42a2-4d0d-a25e-93016641ce80/resourcegroups/Repetitio/providers/Microsoft.Web/sites/repetitio",
+    "marketplaceItemId": "Microsoft.WebSite"
+  },
+  "properties": {
+    "templateHash": "6994524413443138960",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
+        "value": "a9d74e28-42a2-4d0d-a25e-93016641ce80"
+      },
+      "name": {
+        "type": "String",
+        "value": "repetitio"
+      },
+      "location": {
+        "type": "String",
+        "value": "West Europe"
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "ASP-Repetitio-acfe"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "Repetitio"
+      },
+      "alwaysOn": {
+        "type": "Bool",
+        "value": true
+      },
+      "sku": {
+        "type": "String",
+        "value": "PremiumV2"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "P1v2"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "3"
+      },
+      "workerSizeId": {
+        "type": "String",
+        "value": "3"
+      },
+      "numberOfWorkers": {
+        "type": "String",
+        "value": "1"
+      },
+      "linuxFxVersion": {
+        "type": "String",
+        "value": "DOTNETCORE|3.1"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Running",
+    "timestamp": "2020-08-17T18:10:08.4737411Z",
+    "duration": "PT0.7574924S",
+    "correlationId": "a983dcd3-85f3-441c-b19e-3e17ea207376",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "westeurope"
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "westeurope"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/a9d74e28-42a2-4d0d-a25e-93016641ce80/resourceGroups/Repetitio/providers/Microsoft.Web/serverfarms/ASP-Repetitio-acfe",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "ASP-Repetitio-acfe"
+          }
+        ],
+        "id": "/subscriptions/a9d74e28-42a2-4d0d-a25e-93016641ce80/resourceGroups/Repetitio/providers/Microsoft.Web/sites/repetitio",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "repetitio"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}
