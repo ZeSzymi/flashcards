@@ -15,7 +15,7 @@ namespace flashcards.StartupConfiguration
         {
 
             services.AddIdentity<User, Role>()
-                   .AddEntityFrameworkStores<RepetitioContext>();
+                   .AddEntityFrameworkStores<FlashcardsContext>();
 
             services.Configure<IdentityOptions>(options =>
             {

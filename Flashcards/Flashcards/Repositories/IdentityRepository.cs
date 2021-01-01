@@ -18,10 +18,10 @@ namespace flashcards.Repositories
 {
     public class IdentityRepository : IIdentityRepository
     {
-        private readonly RepetitioContext _context;
+        private readonly FlashcardsContext _context;
         private readonly IConfiguration _configuration;
 
-        public IdentityRepository(RepetitioContext context, IConfiguration configuration)
+        public IdentityRepository(FlashcardsContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -39,7 +39,7 @@ namespace flashcards.Repositories
         public async Task AddClaimsToRole(RoleWithClaimsDto roleWithClaims)
         {
             var claims = await _context.Claims.Where(c => roleWithClaims.ClaimIds.Contains(c.Id)).ToListAsync();
-            var claimsToAdd = claims.Select(c => new IdentityRoleClaim<string> { RoleId = roleWithClaims.RoleId, ClaimType = c.ClaimType, ClaimValue = c.ClaimValue }).ToList();
+            var claimsToAdd = claims.Select(c => new IdentityRoleClaim<Guid> { RoleId = roleWithClaims.RoleId, ClaimType = c.ClaimType, ClaimValue = c.ClaimValue }).ToList();
             await _context.RoleClaims.AddRangeAsync(claimsToAdd);
             await _context.SaveChangesAsync();
         }

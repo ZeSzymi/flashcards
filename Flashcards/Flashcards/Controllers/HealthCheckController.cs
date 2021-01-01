@@ -13,5 +13,13 @@ namespace flashcards.Controllers
         {
             return Ok("ok");
         }
+
+        [AllowAnonymous]
+        [HttpGet("ip")]
+        public IActionResult GetIp()
+        {
+            var externalip = new WebClient().DownloadString("http://icanhazip.com");
+            return Ok(externalip);
+        }
     }
 }

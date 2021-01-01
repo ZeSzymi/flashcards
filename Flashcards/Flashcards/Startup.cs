@@ -38,7 +38,7 @@ namespace flashcards
                                   });
             });
 
-            services.AddDbContext<RepetitioContext>(options =>
+            services.AddDbContext<FlashcardsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MySqlConnection")));
 
             services.AddControllers().AddNewtonsoftJson(options =>
