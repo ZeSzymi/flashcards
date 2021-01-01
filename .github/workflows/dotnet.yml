@@ -28,8 +28,8 @@ jobs:
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
-          app-name: ${{ env.flashcards-project }} # Replace with your app name
+          app-name: 'flashcards-project' # Replace with your app name
           publish-profile: ${{ secrets.AZURE }} # Define secret variable in repository settings as per action documentation
-          package: '${{ env.flashcards-project }}/flashcards'
+          package: 'flashcards-project/flashcards'
 
       
