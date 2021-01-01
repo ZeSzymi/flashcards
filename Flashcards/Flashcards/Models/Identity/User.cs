@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace flashcards.Models.Identity
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<Guid>
     {
         public User(string userName) : base(userName)
         {

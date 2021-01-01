@@ -53,6 +53,5 @@ namespace flashcards.Controllers
             var token = await _mediator.Send(query);
             return Ok(new { Token = token});
         }
-
     }
 }

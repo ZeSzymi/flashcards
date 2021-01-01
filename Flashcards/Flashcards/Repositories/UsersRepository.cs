@@ -13,9 +13,9 @@ namespace flashcards.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
-        private readonly RepetitioContext _context;
+        private readonly FlashcardsContext _context;
 
-        public UsersRepository(RepetitioContext context)
+        public UsersRepository(FlashcardsContext context)
         {
             _context = context;
         }

@@ -3,13 +3,13 @@ using flashcards.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using System;
 
 namespace flashcards.Contexts
 {
-    public class RepetitioContext : IdentityDbContext<User, Role, string>
+    public class FlashcardsContext : IdentityDbContext<User, Role, Guid, IdentityUserClaim<Guid>, UserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
-        public RepetitioContext(DbContextOptions<RepetitioContext> options)
+        public FlashcardsContext(DbContextOptions<FlashcardsContext> options)
         : base(options) { }
 
         public DbSet<ClaimDb> Claims { get; set; }
