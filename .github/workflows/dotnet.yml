@@ -23,3 +23,13 @@ jobs:
       run: dotnet build Flashcards --no-restore
     - name: Test
       run: dotnet test Flashcards --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish Flashcards -c Release -o dotnetcorewebapp 
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v1
+      with: 
+        app-name: 'flashcards-project'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3bfdbad73f594578b34280ada1773c76 }}
+        package: './dotnetcorewebapp' 
+      
