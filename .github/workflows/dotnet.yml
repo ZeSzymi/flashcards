@@ -24,12 +24,12 @@ jobs:
     - name: Test
       run: dotnet test Flashcards --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish Flashcards -c Release -o dotnetcorewebapp 
+      run: dotnet publish Flashcards -c Release -o flashcards 
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-      uses: azure/webapps-deploy@v1
+      uses: azure/webapps-deploy@v2
       with: 
-        app-name: 'flashcards-project'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3bfdbad73f594578b34280ada1773c76 }}
-        package: './dotnetcorewebapp' 
+          app-name: ${{ env.flashcards-project }} # Replace with your app name
+          publish-profile: ${{ secrets.AZURE }} # Define secret variable in repository settings as per action documentation
+          package: '${{ env.flashcards-project }}/flashcards'
+
       
