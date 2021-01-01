@@ -30,6 +30,6 @@ jobs:
       with: 
           app-name: 'flashcards-project' # Replace with your app name
           publish-profile: ${{ secrets.AZURE }} # Define secret variable in repository settings as per action documentation
-          package: '${{env.DOTNET_ROOT}}/flashcards'
+          package: './flashcards'
 
       
