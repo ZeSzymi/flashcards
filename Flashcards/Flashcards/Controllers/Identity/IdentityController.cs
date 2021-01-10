@@ -2,14 +2,10 @@
 using flashcards.CQRS.Commands.Identity;
 using flashcards.CQRS.Queries.Identity.LoginUser;
 using flashcards.Models.Dtos;
-using flashcards.Models.Identity;
-using flashcards.StartupConfiguration.Options;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace flashcards.Controllers
 {
@@ -17,17 +13,11 @@ namespace flashcards.Controllers
     [Route("api/[controller]")]
     public class IdentityController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
         private readonly IMediator _mediator;
-        private readonly UrlsOptions _options;
 
-        public IdentityController(UserManager<User> userManager, SignInManager<User> signInManager, IMediator mediator, IOptions<UrlsOptions> options)
+        public IdentityController(IMediator mediator)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
             _mediator = mediator;
-            _options = options.Value;
         }
 
         [HttpPost("register")]
@@ -39,10 +29,12 @@ namespace flashcards.Controllers
             var token = string.Empty;
             if (result.Succeeded)
             {
+                var roleCommand = new AddUserToRoleCommand("user", userDto.Username);
+                await _mediator.Send(roleCommand);
                 var query = new LoginUserQuery(userDto);
                 token = await _mediator.Send(query);
             }
-            return Ok(token);
+            return Ok(new { Token = token });
         }
 
         [HttpPost("login")]

@@ -2,6 +2,7 @@
 using flashcards.Repositories.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading;
@@ -48,6 +49,7 @@ namespace flashcards.CQRS.Queries.Identity.LoginUser
             claims.Add(new Claim("displayName", user.DisplayName ?? ""));
             claims.Add(new Claim("email", user.Email ?? ""));
             claims.Add(new Claim("username", user.UserName ?? ""));
+            claims.Add(new Claim("id", user.Id.ToString() ?? Guid.Empty.ToString()));
 
             foreach (var roleName in roles)
             {

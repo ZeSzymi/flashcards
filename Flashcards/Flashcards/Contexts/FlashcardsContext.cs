@@ -1,5 +1,6 @@
 ﻿using flashcards.Models.Db;
 using flashcards.Models.Identity;
+using Flashcards.Models.Db;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ namespace flashcards.Contexts
         : base(options) { }
 
         public DbSet<ClaimDb> Claims { get; set; }
+        public DbSet<Flashcard> Flashcards { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +29,10 @@ namespace flashcards.Contexts
                 entity.HasOne(e => e.User).WithMany(e => e.UsersRoles).HasForeignKey(e => e.UserId);
                 entity.HasOne(e => e.Role).WithMany(e => e.UsersRoles).HasForeignKey(e => e.RoleId);
             });
+
+            modelBuilder.Entity<Flashcard>(entity => entity.ToTable("Flashcards"));
+
+            modelBuilder.Entity<Answer>(entity => entity.ToTable("Answers"));
         }
 
     }

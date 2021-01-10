@@ -3,6 +3,7 @@ using flashcards.Contexts;
 using flashcards.Middleware;
 using flashcards.StartupConfiguration;
 using flashcards.StartupConfiguration.Options;
+using Flashcards.Repositories.Interfaces;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,7 +60,7 @@ namespace flashcards
             services.AddSingleton(mapper);
 
             services.Configure<UrlsOptions>(Configuration.GetSection(UrlsOptions.Urls));
-
+            
             MediatRServicesConfiguration.Configure(services, Configuration);
             IdentityServicesConfiguration.Configure(services, Configuration);
             InfrastructureServicesConfiguration.Configure(services, Configuration);

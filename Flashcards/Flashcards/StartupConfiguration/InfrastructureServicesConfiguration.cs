@@ -1,5 +1,7 @@
 ﻿using flashcards.Repositories;
 using flashcards.Repositories.Interfaces;
+using Flashcards.Repositories;
+using Flashcards.Repositories.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +13,7 @@ namespace flashcards.StartupConfiguration
         {
             services.AddScoped<IIdentityRepository, IdentityRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IFlashcardsRepository, FlashcardsRepository>();
         }
     }
 }

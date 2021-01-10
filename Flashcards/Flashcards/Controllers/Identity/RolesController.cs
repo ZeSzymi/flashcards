@@ -21,10 +21,10 @@ namespace flashcards.Controllers.Identity
             _roleManager = roleManager;
         }
 
-        [HttpGet("claims/{claimValue}")]
-        public async Task<IActionResult> AddClaim(string claimValue)
+        [HttpPost("claims")]
+        public async Task<IActionResult> AddClaim([FromBody]string claim)
         {
-            await _identityRepository.AddClaim(claimValue);
+            await _identityRepository.AddClaim(claim);
             return Ok();
         }
 
