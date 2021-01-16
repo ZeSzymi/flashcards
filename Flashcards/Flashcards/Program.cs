@@ -42,6 +42,7 @@ namespace flashcards
                       logging.ClearProviders();
                       logging.AddConsole();
                       logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                      logging.AddAzureWebAppDiagnostics();
                   }).UseNLog();
     }
 }
