@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using System.Net;
 
 namespace flashcards.Controllers
@@ -20,6 +21,14 @@ namespace flashcards.Controllers
         {
             var externalip = new WebClient().DownloadString("http://icanhazip.com");
             return Ok(externalip);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("folder")]
+        public IActionResult GetFolder()
+        {
+            string path = Directory.GetCurrentDirectory();
+            return Ok(path);
         }
     }
 }
