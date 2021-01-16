@@ -20,7 +20,7 @@ namespace flashcards.Controllers
         [HttpGet()] 
         public IActionResult Get() 
         {
-            _logger.LogTrace("healthcheck");
+            _logger.LogInformation("healthcheck");
             return Ok("ok");
         }
 
@@ -28,7 +28,7 @@ namespace flashcards.Controllers
         [HttpGet("ip")]
         public IActionResult GetIp()
         {
-            _logger.LogTrace("ip");
+            _logger.LogInformation("ip");
             var externalip = new WebClient().DownloadString("http://icanhazip.com");
             return Ok(externalip);
         }
@@ -37,7 +37,7 @@ namespace flashcards.Controllers
         [HttpGet("folder")]
         public IActionResult GetFolder()
         {
-            _logger.LogTrace("folder");
+            _logger.LogInformation("folder");
             string path = Directory.GetCurrentDirectory();
             return Ok(path);
         }
