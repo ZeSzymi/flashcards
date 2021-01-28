@@ -64,6 +64,7 @@ namespace flashcards
             MediatRServicesConfiguration.Configure(services, Configuration);
             IdentityServicesConfiguration.Configure(services, Configuration);
             InfrastructureServicesConfiguration.Configure(services, Configuration);
+            FluentValidationServicesConfiguration.Configure(services, Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
