@@ -21,7 +21,6 @@ namespace flashcards.Controllers.Identity
         }
 
         [HttpGet("{role}/{username}")]
-        //[Authorize(Policy = "get_sets")]
         public async Task<IActionResult> UserToRole(string role, string username)
 {
             var command = new AddUserToRoleCommand(role, username);
