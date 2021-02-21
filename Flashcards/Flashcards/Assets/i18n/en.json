@@ -1,0 +1,21 @@
+{
+  "IDENTITY": {
+    "WRONG_PASSWORD": "Wrong password",
+    "LOGOUT": "Logout",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "PASSWORD": "Password"
+  },
+  "FLASHCARDS": {
+    "ADD": "Add",
+    "LIST": "List",
+    "ADMIN": "Admin",
+    "ANSWER": "Answer",
+    "FLASHCARDS": "Flashcards",
+    "ADD_ANSWER": "Add Answer"
+  },
+  "COMMONS": {
+    "REFRESH": "Refresh",
+    "SAVE": "Save"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "IDENTITY": {
+    "WRONG_PASSWORD": "Z≥e has≥o",
+    "LOGOUT": "Wyloguj",
+    "LOGIN": "Login",
+    "REGISTER": "Zarejestruj",
+    "PASSWORD": "Has≥o"
+  },
+  "FLASHCARDS": {
+    "ADD": "Dodaj",
+    "LIST": "Lista",
+    "ADMIN": "Admin",
+    "ANSWER": "Odpowiedz",
+    "FLASHCARDS": "Fiszki",
+    "ADD_ANSWER": "Dodaj odpowiedü"
+  },
+  "COMMONS": {
+    "REFRESH": "Odúwieø",
+    "SAVE": "Zapisz"
+  }
+}

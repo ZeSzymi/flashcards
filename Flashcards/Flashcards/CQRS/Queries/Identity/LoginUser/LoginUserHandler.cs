@@ -1,5 +1,6 @@
 ﻿using flashcards.Models.Identity;
 using flashcards.Repositories.Interfaces;
+using Flashcards.Consts;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -39,7 +40,8 @@ namespace flashcards.CQRS.Queries.Identity.LoginUser
 
                 if (!result.Succeeded)
                 {
-                    return null;
+
+                    throw new Exception(ExceptionMessages.WrongPassword);
                 }
             }
 

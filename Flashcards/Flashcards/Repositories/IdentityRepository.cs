@@ -3,7 +3,6 @@ using flashcards.Models.Db;
 using flashcards.Models.Dtos;
 using flashcards.Models.Identity;
 using flashcards.Repositories.Interfaces;
-using Flashcards.Models.Dtos.Request;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
