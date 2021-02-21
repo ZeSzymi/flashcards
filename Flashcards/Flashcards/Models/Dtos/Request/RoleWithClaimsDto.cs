@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace flashcards.Models.Dtos
+namespace Flashcards.Models.Dtos.Request
 {
     public class RoleWithClaimsDto
     {
-        public Guid RoleId { get; set; }
+        public string Name { get; set; }
         public List<Guid> ClaimIds { get; set; }
     }
 }

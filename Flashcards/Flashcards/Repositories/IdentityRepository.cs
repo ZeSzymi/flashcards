@@ -1,7 +1,9 @@
 ﻿using flashcards.Contexts;
 using flashcards.Models.Db;
 using flashcards.Models.Dtos;
+using flashcards.Models.Identity;
 using flashcards.Repositories.Interfaces;
+using Flashcards.Models.Dtos.Request;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,37 +20,57 @@ namespace flashcards.Repositories
 {
     public class IdentityRepository : IIdentityRepository
     {
+        private readonly RoleManager<Role> _roleManager;
         private readonly FlashcardsContext _context;
         private readonly IConfiguration _configuration;
 
-        public IdentityRepository(FlashcardsContext context, IConfiguration configuration)
+        public IdentityRepository(RoleManager<Role> roleManager, FlashcardsContext context, IConfiguration configuration)
         {
+            _roleManager = roleManager;
             _context = context;
             _configuration = configuration;
         }
 
-        public async Task AddClaim(string claimValue)
+        public async Task<bool> AddClaim(string claimValue)
         {
             var claim = new ClaimDb { Id = Guid.NewGuid(), ClaimType = "Privilege", ClaimValue = claimValue };
             await _context.Claims.AddAsync(claim);
-            await _context.SaveChangesAsync();
+            return (await _context.SaveChangesAsync()) > 0;
         } 
 
         public async Task<List<ClaimDb>> GetClaims() => await _context.Claims.ToListAsync();
 
-        public async Task AddClaimsToRole(RoleWithClaimsDto roleWithClaims)
+        public async Task<Role> GetRole(string roleName) => await _context.Roles.SingleOrDefaultAsync(role => role.Name == roleName);
+
+        public async Task<bool> AddClaimsToRole(Guid roleId, List<Guid> claimIds)
         {
-            var claims = await _context.Claims.Where(c => roleWithClaims.ClaimIds.Contains(c.Id)).ToListAsync();
-            var claimsToAdd = claims.Select(c => new IdentityRoleClaim<Guid> { RoleId = roleWithClaims.RoleId, ClaimType = c.ClaimType, ClaimValue = c.ClaimValue }).ToList();
+            var claims = await _context.Claims.Where(c => claimIds.Contains(c.Id)).ToListAsync();
+            var claimsToAdd = claims.Select(c => new IdentityRoleClaim<Guid> { RoleId = roleId, ClaimType = c.ClaimType, ClaimValue = c.ClaimValue }).ToList();
             await _context.RoleClaims.AddRangeAsync(claimsToAdd);
-            await _context.SaveChangesAsync();
+            return (await _context.SaveChangesAsync()) > 0;
+        }
+        
+        public async Task<bool> AddRole(string roleName)
+        {
+            var role = new Role
+            {
+                Name = roleName
+            };
+            var result = await _roleManager.CreateAsync(role);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception(result.Errors.First().Code);
+            }
+
+            return result.Succeeded;
         }
 
-        public async Task RemoveClaims(Guid id)
+        public async Task<bool> RemoveClaims(Guid id)
         {
             var claim = await _context.Claims.FirstOrDefaultAsync(c => c.Id == id);
             _context.Remove(claim);
-            await _context.SaveChangesAsync();
+            return (await _context.SaveChangesAsync()) > 0;
         }
         
         public async Task<List<RoleDto>> GetRoles()

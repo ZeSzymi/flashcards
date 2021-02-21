@@ -2,6 +2,12 @@
 using flashcards.Models.Dtos;
 using flashcards.Models.Identity;
 using flashcards.Repositories.Interfaces;
+using Flashcards.CQRS.Commands.Identity.Roles.AddClaimToRole;
+using Flashcards.CQRS.Commands.Identity.Roles.AddRole;
+using Flashcards.CQRS.Queries.Identity.Roles.GetRole;
+using Flashcards.CQRS.Queries.Identity.Roles.GetRoles;
+using Flashcards.Models.Dtos.Request;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,13 +18,13 @@ namespace flashcards.Controllers.Identity
     [Route("api/[controller]")]
     public class RolesController : ControllerBase
     {
-        private readonly RoleManager<Role> _roleManager;
         private readonly IIdentityRepository _identityRepository;
+        private readonly IMediator _mediator;
 
-        public RolesController(RoleManager<Role> roleManager, IIdentityRepository identityRepository)
+        public RolesController(IIdentityRepository identityRepository, IMediator mediator)
         {
             _identityRepository = identityRepository;
-            _roleManager = roleManager;
+            _mediator = mediator;
         }
 
         [HttpPost("claims")]
@@ -35,26 +41,31 @@ namespace flashcards.Controllers.Identity
             return Ok(claims);
         }
 
-        [HttpGet("roles/{roleName}")]
-        public async Task<IActionResult> AddRole(string roleName)
-        {
-            var role = new Role(roleName);
-            await _roleManager.CreateAsync(role);
-            return Ok();
-        }
-
         [HttpPost("roles/claims")]
-        public async Task<IActionResult> AddClaimToRole([FromBody] RoleWithClaimsDto role)
+        public async Task<IActionResult> AddClaimToRole([FromBody] RoleIdWithClaimsDto roleIdWithClaims)
         {
-            await _identityRepository.AddClaimsToRole(role);
+            await _identityRepository.AddClaimsToRole(roleIdWithClaims.RoleId, roleIdWithClaims.ClaimIds);
             return Ok();
         }
 
         [HttpGet("roles")]
         public async Task<IActionResult> GetRoles()
         {
-            var roles = await _identityRepository.GetRoles();
+            var query = new GetRolesQuery();
+            var roles = await _mediator.Send(query);
             return Ok(roles);
+        }
+
+        [HttpPost("role-with-claims")]
+        public async Task<IActionResult> AddRoleWithClaims([FromBody] RoleWithClaimsDto roleWithClaims)
+        {
+            var command = new AddRoleCommand(roleWithClaims.Name);
+            await _mediator.Send(command);
+            var roleQuery = new GetRoleQuery(roleWithClaims.Name);
+            var role = await _mediator.Send(roleQuery);
+            var addClaimsCommand = new AddClaimsToRoleCommand(role.Id, roleWithClaims.ClaimIds);
+            await _mediator.Send(addClaimsCommand);
+            return Ok();
         }
     }
 }
