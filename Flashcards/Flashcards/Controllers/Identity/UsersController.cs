@@ -1,5 +1,7 @@
 ﻿using flashcards.CQRS.Commands.Identity;
 using flashcards.CQRS.Queries.Identity.LoginUser;
+using Flashcards.CQRS.Commands.Users.UpdateUserRoles;
+using Flashcards.Models.Dtos.Request;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -40,6 +42,14 @@ namespace flashcards.Controllers.Identity
             var query = new GetUsersQuery();
             var users = await _mediator.Send(query);
             return Ok(users);
+        }
+
+        [HttpPut("roles")]
+        public async Task<IActionResult> UpdateUserRoles(UserWithRolesDto userWithRolesDto)
+        {
+            var command = new UpdateUserRolesCommand(userWithRolesDto);
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }
