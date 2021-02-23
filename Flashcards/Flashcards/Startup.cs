@@ -1,8 +1,8 @@
 using AutoMapper;
 using flashcards.Contexts;
-using flashcards.Middleware;
 using flashcards.StartupConfiguration;
 using flashcards.StartupConfiguration.Options;
+using Flashcards.Filters;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,11 +41,17 @@ namespace flashcards
             services.AddDbContext<FlashcardsContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MySqlConnection")));
 
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(typeof(ValidationFilter));
+            });
+
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver() { NamingStrategy = new CamelCaseNamingStrategy() };
                 options.SerializerSettings.Formatting = Formatting.Indented;
             });
+
 
             services.AddMvc()
                 .AddFluentValidation(fv => fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false);
@@ -68,9 +74,10 @@ namespace flashcards
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            app.UseExceptionHandler("/error");
+            //app.ConfigureExceptionHandler(logger);
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
-            app.ConfigureExceptionHandler(logger);
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
@@ -79,7 +86,7 @@ namespace flashcards
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseExceptionHandler("/api/exception/Error");
+            
         }
     }
 }

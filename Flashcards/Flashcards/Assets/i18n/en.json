@@ -4,13 +4,19 @@
     "LOGOUT": "Logout",
     "LOGIN": "Login",
     "REGISTER": "Register",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "EMPTY_LOGIN": "Error empty login",
+    "EMPTY_PASSWORD": "Error empty password",
+    "EMAIL": "Email"
   },
   "FLASHCARDS": {
     "ADD": "Add",
+    "ADD_SUCCESS": "Flashcards added sucesfully",
     "LIST": "List",
     "ADMIN": "Admin",
     "ANSWER": "Answer",
+    "QUESTION": "Question",
+    "ANSWER_WORD": "Answer",
     "FLASHCARDS": "Flashcards",
     "ADD_ANSWER": "Add Answer"
   },

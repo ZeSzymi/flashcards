@@ -1,14 +1,15 @@
 ﻿using flashcards.Exceptions;
+using Flashcards.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace flashcards.Controllers
 {
-    [Route("api/[controller]")]
-    public class ExceptionController : ControllerBase
+    [ApiExplorerSettings(IgnoreApi = true)]
+    public class ErrorsController : ControllerBase
     {
-        [Route("[action]")]
+        [Route("error")]
         public IActionResult Error()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
@@ -20,9 +21,11 @@ namespace flashcards.Controllers
 
                 switch(exception) {
                     case ObjectNotFoundException e:
-                        return NotFound();
+                        return NotFound(exception.Message);
+                    case InvalidModelException e:
+                        return Forbid(exception.Message);
                     case Exception e: 
-                        return BadRequest();
+                        return BadRequest(exception.Message);
                 }
             }
 

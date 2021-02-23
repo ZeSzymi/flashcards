@@ -31,7 +31,7 @@ namespace flashcards.CQRS.Queries.Identity.LoginUser
             var user = await _userManager.FindByNameAsync(request.User.Username);
             if (user == null)
             {
-                return null;
+                throw new Exception(ExceptionMessages.WrongUser);
             }
 
             if (request.HasPassword)

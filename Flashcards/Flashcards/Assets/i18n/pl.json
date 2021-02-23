@@ -4,13 +4,19 @@
     "LOGOUT": "Wyloguj",
     "LOGIN": "Login",
     "REGISTER": "Zarejestruj",
-    "PASSWORD": "Has≥o"
+    "PASSWORD": "Has≥o",
+    "EMPTY_LOGIN": "B≥ad pusty login",
+    "EMPTY_PASSWORD": "B≥ad puste has≥o",
+    "EMAIL": "Email"
   },
   "FLASHCARDS": {
     "ADD": "Dodaj",
+    "ADD_SUCCESS": "Fiszka dodana pomyúlnie",
     "LIST": "Lista",
     "ADMIN": "Admin",
     "ANSWER": "Odpowiedz",
+    "QUESTION": "Pytanie",
+    "ANSWER_WORD": "Odopwiedü",
     "FLASHCARDS": "Fiszki",
     "ADD_ANSWER": "Dodaj odpowiedü"
   },
