@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using flashcards.Models.Dtos;
 using flashcards.Models.Identity;
 using flashcards.Repositories.Interfaces;
@@ -6,6 +7,7 @@ using Flashcards.CQRS.Commands.Identity.Roles.AddClaimToRole;
 using Flashcards.CQRS.Commands.Identity.Roles.AddRole;
 using Flashcards.CQRS.Queries.Identity.Roles.GetRole;
 using Flashcards.CQRS.Queries.Identity.Roles.GetRoles;
+using Flashcards.CQRS.Queries.Identity.RolesForUser;
 using Flashcards.Models.Dtos.Request;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,6 +54,14 @@ namespace flashcards.Controllers.Identity
         public async Task<IActionResult> GetRoles()
         {
             var query = new GetRolesQuery();
+            var roles = await _mediator.Send(query);
+            return Ok(roles);
+        }
+
+        [HttpGet("users/{userId:guid}")]
+        public async Task<IActionResult> GetRolesForUser(Guid userId)
+        {
+            var query = new GetRolesForUserQuery(userId);
             var roles = await _mediator.Send(query);
             return Ok(roles);
         }

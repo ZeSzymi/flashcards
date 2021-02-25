@@ -85,6 +85,19 @@ namespace flashcards.Repositories
             return roleDtos;
         }
 
+        public async Task<List<RoleDto>> GetRolesForUser(Guid userId)
+        {
+            var roles = await _context.Roles.Where(role => role.UsersRoles.Select(userRole => userRole.UserId).Contains(userId)).ToListAsync();
+            var roleIds = roles.Select(r => r.Id).ToList();
+            var claims = await _context.RoleClaims.Where(r => roleIds.Contains(r.RoleId)).ToListAsync();
+            var roleDtos = new List<RoleDto>();
+            foreach (var role in roles)
+            {
+                roleDtos.Add(new RoleDto { Name = role.Name, Id = role.Id, Claims = claims.Where(c => c.RoleId == role.Id).ToList() });
+            }
+            return roleDtos;
+        }
+
         public string CreateToken(IList<Claim> claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Security:Token").Value));

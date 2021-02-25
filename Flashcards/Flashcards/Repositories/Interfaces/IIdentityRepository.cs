@@ -18,6 +18,6 @@ namespace flashcards.Repositories.Interfaces
         public Task<Role> GetRole(string roleName);
         public Task<bool> AddClaimsToRole(Guid roleId, List<Guid> claimIds);
         public Task<bool> AddRole(string roleName);
-
+        public Task<List<RoleDto>> GetRolesForUser(Guid userId);
     }
 }

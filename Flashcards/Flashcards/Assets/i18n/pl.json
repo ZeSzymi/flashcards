@@ -1,27 +1,36 @@
 {
   "IDENTITY": {
-    "WRONG_PASSWORD": "Z≥e has≥o",
+    "WRONG_PASSWORD": "Z≈Çe has≈Ço",
     "LOGOUT": "Wyloguj",
     "LOGIN": "Login",
     "REGISTER": "Zarejestruj",
-    "PASSWORD": "Has≥o",
-    "EMPTY_LOGIN": "B≥ad pusty login",
-    "EMPTY_PASSWORD": "B≥ad puste has≥o",
-    "EMAIL": "Email"
+    "PASSWORD": "Has≈Ço",
+    "EMPTY_LOGIN": "B≈Çad pusty login",
+    "EMPTY_PASSWORD": "B≈Çad puste has≈Ço",
+    "EMAIL": "Email",
+    "ADD_ROLE": "Dodaj rolƒô",
+    "ROLES": "Role",
+    "USERS": "U≈ºytkownicy",
+    "PRIVILEGES": "Przywileje",
+    "ROLES_CHANGED_SUCCESSFULLY": "Role zmienione pomy≈õlnie",
+    "NAME": "Nazwa",
+    "WRONG_USER": "Z≈Ça nazwa u≈ºytkownika"
   },
   "FLASHCARDS": {
     "ADD": "Dodaj",
-    "ADD_SUCCESS": "Fiszka dodana pomyúlnie",
+    "ADD_SUCCESS": "Fiszka dodana pomy≈õlnie",
     "LIST": "Lista",
     "ADMIN": "Admin",
     "ANSWER": "Odpowiedz",
     "QUESTION": "Pytanie",
-    "ANSWER_WORD": "Odopwiedü",
+    "ANSWER_WORD": "Odopwied≈∫",
     "FLASHCARDS": "Fiszki",
-    "ADD_ANSWER": "Dodaj odpowiedü"
+    "ADD_ANSWER": "Dodaj odpowied≈∫",
+    "QUESTION_ANSWER_NOT_NULL": "Pytania i odpowiedzi nie mogƒÖ byƒá puste",
+    "ANSWER_NOT_NULL": "Odpowied≈∫ nie mo≈ºe byƒá pusta"
   },
   "COMMONS": {
-    "REFRESH": "Odúwieø",
+    "REFRESH": "Od≈õwie≈º",
     "SAVE": "Zapisz"
   }
 }

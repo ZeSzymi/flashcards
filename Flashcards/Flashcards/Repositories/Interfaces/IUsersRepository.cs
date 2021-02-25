@@ -10,6 +10,6 @@ namespace flashcards.Repositories.Interfaces
     public interface IUsersRepository
     {
         public Task<List<UserResponseDto>> GetUsers();
-        public Task UpdateUserRoles(UserWithRolesDto userWithRoles)
+        public Task UpdateUserRoles(UserWithRolesDto userWithRoles);
     }
 }

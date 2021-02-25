@@ -7,7 +7,14 @@
     "PASSWORD": "Password",
     "EMPTY_LOGIN": "Error empty login",
     "EMPTY_PASSWORD": "Error empty password",
-    "EMAIL": "Email"
+    "EMAIL": "Email",
+    "ADD_ROLE": "Add role",
+    "ROLES": "Roles",
+    "USERS": "Users",
+    "PRIVILEGES": "Privileges",
+    "ROLES_CHANGED_SUCCESSFULLY": "Roles changed successfully",
+    "NAME": "Name",
+    "WRONG_USER": "Wrong user"
   },
   "FLASHCARDS": {
     "ADD": "Add",
@@ -18,7 +25,9 @@
     "QUESTION": "Question",
     "ANSWER_WORD": "Answer",
     "FLASHCARDS": "Flashcards",
-    "ADD_ANSWER": "Add Answer"
+    "ADD_ANSWER": "Add Answer",
+    "QUESTION_ANSWER_NOT_NULL": "Question and answers cannot be empty",
+    "ANSWER_NOT_NULL": "Answer cannot be empty"
   },
   "COMMONS": {
     "REFRESH": "Refresh",

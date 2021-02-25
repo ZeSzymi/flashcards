@@ -44,8 +44,8 @@ namespace flashcards.Controllers.Identity
             return Ok(users);
         }
 
-        [HttpPut("roles")]
-        public async Task<IActionResult> UpdateUserRoles(UserWithRolesDto userWithRolesDto)
+        [HttpPost("roles")]
+        public async Task<IActionResult> UpdateUserRoles([FromBody]UserWithRolesDto userWithRolesDto)
         {
             var command = new UpdateUserRolesCommand(userWithRolesDto);
             await _mediator.Send(command);
