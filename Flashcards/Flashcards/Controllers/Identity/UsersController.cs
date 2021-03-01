@@ -2,6 +2,7 @@
 using flashcards.CQRS.Queries.Identity.LoginUser;
 using Flashcards.CQRS.Commands.Users.UpdateUserRoles;
 using Flashcards.Models.Dtos.Request;
+using Flashcards.Models.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -12,6 +13,7 @@ namespace flashcards.Controllers.Identity
 {
 
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Policy = Privileges.admin)]
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {

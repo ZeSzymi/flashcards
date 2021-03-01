@@ -2,6 +2,7 @@
 using flashcards.Models.Dtos;
 using Flashcards.Models.Db;
 using Flashcards.Models.Dtos.Request;
+using Flashcards.Models.Dtos.Response;
 
 namespace flashcards.StartupConfiguration
 {
@@ -11,6 +12,9 @@ namespace flashcards.StartupConfiguration
         {
             CreateMap<Flashcard, FlashcardDto>();
             CreateMap<FlashcardDto, Flashcard>();
+
+            CreateMap<Flashcard, FlashcardResponseDto>();
+            CreateMap<FlashcardResponseDto, Flashcard>();
 
             CreateMap<Answer, AnswerDto>();
             CreateMap<AnswerDto, Answer>();

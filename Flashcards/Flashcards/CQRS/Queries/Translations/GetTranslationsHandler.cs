@@ -21,7 +21,7 @@ namespace Flashcards.CQRS.Queries.Translations
         public Task<JObject> Handle(GetTranslationsQuery request, CancellationToken cancellationToken)
         {
             var path = _environment.ContentRootPath;
-            var translation =File.ReadAllText($"{path}/assets/i18n/{request.Language}.json");
+            var translation = File.ReadAllText($"{path}/assets/i18n/{request.Language}.json");
             return Task.FromResult(JObject.Parse(translation));
         }
     }

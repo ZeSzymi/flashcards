@@ -14,7 +14,8 @@
     "PRIVILEGES": "Pribilehiyo",
     "ROLES_CHANGED_SUCCESSFULLY": "Matagumpay na nagbago ang mga Roles",
     "NAME": "Pangalan",
-    "WRONG_USER": "Maling user"
+    "WRONG_USER": "Maling user",
+    "REGISTER_SUCCESS": "Matagumpay ang pagrehistro"
   },
   "FLASHCARDS": {
     "ADD": "Magdagdag",
@@ -27,7 +28,8 @@
     "FLASHCARDS": "Flashcards",
     "ADD_ANSWER": "Magdagdag ng sagot",
     "QUESTION_ANSWER_NOT_NULL": "Lagyan ng tanong at sagot",
-    "ANSWER_NOT_NULL": "Lagyan ng sagot"
+    "ANSWER_NOT_NULL": "Lagyan ng sagot",
+    "REMOVE_SUCCESS": "Matagumpay na naalis ang Flashcard"
   },
   "COMMONS": {
     "REFRESH": "Refresh",

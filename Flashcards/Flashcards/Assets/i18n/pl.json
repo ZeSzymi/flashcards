@@ -14,7 +14,8 @@
     "PRIVILEGES": "Przywileje",
     "ROLES_CHANGED_SUCCESSFULLY": "Role zmienione pomyślnie",
     "NAME": "Nazwa",
-    "WRONG_USER": "Zła nazwa użytkownika"
+    "WRONG_USER": "Zła nazwa użytkownika",
+    "REGISTER_SUCCESS": "Rejestracja zakończona pomyślnie"
   },
   "FLASHCARDS": {
     "ADD": "Dodaj",
@@ -27,7 +28,8 @@
     "FLASHCARDS": "Fiszki",
     "ADD_ANSWER": "Dodaj odpowiedź",
     "QUESTION_ANSWER_NOT_NULL": "Pytania i odpowiedzi nie mogą być puste",
-    "ANSWER_NOT_NULL": "Odpowiedź nie może być pusta"
+    "ANSWER_NOT_NULL": "Odpowiedź nie może być pusta",
+    "REMOVE_SUCCESS": "Fiszka usunięta pomyślnie"
   },
   "COMMONS": {
     "REFRESH": "Odśwież",

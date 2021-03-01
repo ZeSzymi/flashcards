@@ -9,14 +9,15 @@ using Flashcards.CQRS.Queries.Identity.Roles.GetRole;
 using Flashcards.CQRS.Queries.Identity.Roles.GetRoles;
 using Flashcards.CQRS.Queries.Identity.RolesForUser;
 using Flashcards.Models.Dtos.Request;
+using Flashcards.Models.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 namespace flashcards.Controllers.Identity
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Policy = Privileges.admin)]
     [Route("api/[controller]")]
     public class RolesController : ControllerBase
     {

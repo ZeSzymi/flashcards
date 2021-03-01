@@ -34,6 +34,7 @@ namespace flashcards
                                   {
                                       builder.WithOrigins("http://localhost:4200")
                                         .AllowAnyOrigin()
+                                        .AllowAnyMethod()
                                         .AllowAnyHeader();
                                   });
             });
@@ -75,7 +76,6 @@ namespace flashcards
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             app.UseExceptionHandler("/error");
-            //app.ConfigureExceptionHandler(logger);
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseAuthentication();

@@ -14,7 +14,8 @@
     "PRIVILEGES": "Privileges",
     "ROLES_CHANGED_SUCCESSFULLY": "Roles changed successfully",
     "NAME": "Name",
-    "WRONG_USER": "Wrong user"
+    "WRONG_USER": "Wrong user",
+    "REGISTER_SUCCESS": "Registration successfull"
   },
   "FLASHCARDS": {
     "ADD": "Add",
@@ -27,7 +28,8 @@
     "FLASHCARDS": "Flashcards",
     "ADD_ANSWER": "Add Answer",
     "QUESTION_ANSWER_NOT_NULL": "Question and answers cannot be empty",
-    "ANSWER_NOT_NULL": "Answer cannot be empty"
+    "ANSWER_NOT_NULL": "Answer cannot be empty",
+    "REMOVE_SUCCESS": "Flashcard removed successfully"
   },
   "COMMONS": {
     "REFRESH": "Refresh",

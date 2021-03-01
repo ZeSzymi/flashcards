@@ -1,5 +1,6 @@
 ﻿using flashcards.Models.Dtos;
 using Flashcards.CQRS.Commands.Flashcards.AddFlashcard;
+using Flashcards.CQRS.Commands.Flashcards.DeleteFlashcard;
 using Flashcards.CQRS.Queries.Flashcards.GetFlashcards;
 using Flashcards.Extensions;
 using Flashcards.Models.Enums;
@@ -46,8 +47,8 @@ namespace Flashcards.Controllers.Cards
         [Authorize(Policy = Privileges.delete_cards)]
         public async Task<IActionResult> Delete(Guid flashcardId)
         {
-            var query = new GetFlashcardsQuery(flashcardId);
-            var result = await _mediator.Send(query);
+            var command = new DeleteFlashcardCommand(flashcardId);
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
